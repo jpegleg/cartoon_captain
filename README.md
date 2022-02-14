@@ -20,3 +20,5 @@ e52318331cab, EAAS1beta <b style="color:green">HEALTHY</b>
 
 The only requirement for this lookups.state file structure is that each line starts with the STATE-ID followed by a comma, then the display string on that same line.
 
+
+![cartoon_cap_1](https://carefuldata.com/images/cartoon_captain_1.png)
