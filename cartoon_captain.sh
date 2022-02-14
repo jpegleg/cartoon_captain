@@ -11,9 +11,9 @@ cp /opt/cctk/workspace/current.state /opt/cctk/workspace/previous.state
 kubectl get all -A > /opt/cctk/workspace/current.state
 cat /opt/cctk/workspace/current.state | awk '{print $1,$2,$3,$4,$5}' > /opt/cctk/workspace/current.state.timeless
 kubectl get events -A | awk '{print $1,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21}' > /opt/cctk/workspace/events.state
-shash=$(b2sum /opt/cctk/workspace/current.state.timeless | cut -d' ' -f1 | cut -c1-12)
+shash=$(b2sum /opt/cctk/workspace/current.state.timeless | cut -c1-12)
 echo "🍻 STATE-ID $shash" > /opt/cctk/workspace/state.hash
-dhash=$(b2sum /opt/cctk/workspace/events.state | cut -d ' ' -f1 | cut -c1-12)
+dhash=$(b2sum /opt/cctk/workspace/events.state | cut -c1-12)
 echo "🍃 EVENT-ID $dhash" > /opt/cctk/workspace/events.hash
 echo "<h2>$(grep $shash /opt/cctk/lookups.state | cut -d',' -f2)</h2>" > /opt/cctk/workspace/state.display
 echo "<h2>$(grep $dhash /opt/cctk/lookups.events | cut -d',' -f2)</h2>" > /opt/cctk/workspace/events.display
