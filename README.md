@@ -26,5 +26,6 @@ The ids are created from truncated BLAKE2 hashes of the kubectl output excluding
 
 So when any new events occur, the EVENT-ID will change, and when any kubernetes pod, deployment, service, etc changes states or is recreated, the STATE-ID will change.
 
+Note the events lines are also truncated to the 21st field. THis will capture most events, but events with MESSAGE values longer than that will get truncted.
 
 ![cartoon_cap_1](https://carefuldata.com/images/cartoon_captain_1.png)
