@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-which kubectl || exit 1
-kubectl get nodes || exit 1
 ttime=$(date +%Y%m%d%H%M%S)
 mkdir -p /opt/cctk/workspace 2>/dev/null
 touch /opt/cctk/workspace/current.state
@@ -12,7 +10,7 @@ touch /opt/cctk/lookups.events
 cp /opt/cctk/workspace/current.state /opt/cctk/workspace/previous.state
 kubectl get all -A > /opt/cctk/workspace/current.state
 cat /opt/cctk/workspace/current.state | awk '{print $1,$2,$3,$4,$5}' > /opt/cctk/workspace/current.state.timeless
-kubectl get events -A > /opt/cctk/workspace/events.state
+kubectl get events -A | awk '{print $1,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21}' > /opt/cctk/workspace/events.state
 shash=$(b2sum /opt/cctk/workspace/current.state.timeless | cut -d' ' -f1 | cut -c1-12)
 echo "🍻 STATE-ID $shash" > /opt/cctk/workspace/state.hash
 dhash=$(b2sum /opt/cctk/workspace/events.state | cut -d ' ' -f1 | cut -c1-12)
